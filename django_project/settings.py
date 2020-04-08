@@ -12,6 +12,8 @@ import netifaces
 
 # Find out what the IP addresses are at run time
 # This is necessary because otherwise Gunicorn will reject the connections
+
+
 def ip_addresses():
     ip_list = []
     for interface in netifaces.interfaces():
@@ -20,6 +22,7 @@ def ip_addresses():
             if x in addrs:
                 ip_list.append(addrs[x][0]['addr'])
     return ip_list
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -116,11 +119,15 @@ STATIC_URL = '/static/'
 # Allow Django from all hosts. This snippet is installed from
 # /var/lib/digitalocean/allow_hosts.py
 
-import os
-import netifaces
+# attempt for image
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+img src = "/media/AnimalsCross/hedge.jpeg"
+
 
 # Find out what the IP addresses are at run time
 # This is necessary because otherwise Gunicorn will reject the connections
+
 def ip_addresses():
     ip_list = []
     for interface in netifaces.interfaces():
@@ -130,6 +137,6 @@ def ip_addresses():
                 ip_list.append(addrs[x][0]['addr'])
     return ip_list
 
+
 # Discover our IP address
 ALLOWED_HOSTS = ip_addresses()
-
