@@ -20,5 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     url('', views.home, name='homepage'),
     url('admin/', include(admin.site.urls)),
+    url('secret/', include(example.urls), name='secretpage'),
 
 ]
